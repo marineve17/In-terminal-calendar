@@ -7,6 +7,9 @@
 
 using namespace std;
 
+string colourHeader, colourWeekends, colourDate, colourMessage;
+string colourText = "\x1B[38;2;247;247;247m";
+
 bool isLeap(int year) {
     if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
         return true;
@@ -105,85 +108,85 @@ void displayDay(vector<vector<int>> &v, int year, int month, int day) {
             
         if (day+1 == daysIn(month+1, year)) {  //spacing between months
             if (x == 2) {
-                cout << "\x1B[38;2;246;74;164m" << v[month][day] << "\n" << "\x1B[0m" << endl;
+                cout << colourDate << v[month][day] << "\n" << "\x1B[0m" << endl;
             } else if ((x == 3) || (x == 4) || (x == 5) || (x == 6)) {
-                cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\n" << "\x1B[0m" << endl;
+                cout << colourDate << setw(5) << v[month][day] << "\n" << "\x1B[0m" << endl;
             } else {
-                cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\x1B[0m" << "\n" << endl;
+                cout << colourDate << setw(5) << v[month][day] << "\x1B[0m" << "\n" << endl;
             }
 
         } else if (day == 0) {
             switch (x) {  //aligning first row
                 case (2):
-                    cout << "\x1B[38;2;246;74;164m" << " " << v[month][day] << "\x1B[0m";
+                    cout << colourDate << " " << v[month][day] << "\x1B[0m";
                     break; 
                 case (3):
-                    cout << "\x1B[38;2;246;74;164m" << setw(7)  << v[month][day] << "\x1B[0m";
+                    cout << colourDate << setw(7)  << v[month][day] << "\x1B[0m";
                     break;
                 case (4): 
-                    cout << "\x1B[38;2;246;74;164m" << setw(12) << v[month][day] << "\x1B[0m";
+                    cout << colourDate << setw(12) << v[month][day] << "\x1B[0m";
                     break;
                 case (5):
-                    cout << "\x1B[38;2;246;74;164m" << setw(17) << v[month][day] << "\x1B[0m";
+                    cout << colourDate << setw(17) << v[month][day] << "\x1B[0m";
                     break;
                 case (6):
-                    cout << "\x1B[38;2;246;74;164m" << setw(22) << v[month][day] << "\x1B[0m";
+                    cout << colourDate << setw(22) << v[month][day] << "\x1B[0m";
                     break;
                 case (0): 
-                    cout << "\x1B[38;2;246;74;164m" << setw(27) << v[month][day] << "\x1B[0m";
+                    cout << colourDate << setw(27) << v[month][day] << "\x1B[0m";
                     break;
                 case (1): 
-                    cout << "\x1B[38;2;246;74;164m" << setw(32) << v[month][day] << "\x1B[0m" << endl;
+                    cout << colourDate << setw(32) << v[month][day] << "\x1B[0m" << endl;
                     break;
             }
 
         } else if (day < 9) { //aligning 1 digit numbers
                 switch (x) {
                     case (2):
-                        cout << "\x1B[38;2;246;74;164m" << " " << v[month][day] << "\x1B[0m";
+                        cout << colourDate << " " << v[month][day] << "\x1B[0m";
                         break;
                     case (3): 
-                        cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\x1B[0m";
+                        cout << colourDate << setw(5) << v[month][day] << "\x1B[0m";
                         break;
                     case (4):
-                        cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\x1B[0m";
+                        cout << colourDate << setw(5) << v[month][day] << "\x1B[0m";
                         break;
                     case (5):
-                        cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\x1B[0m";
+                        cout << colourDate << setw(5) << v[month][day] << "\x1B[0m";
                         break;
                     case (6): 
-                        cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\x1B[0m";
+                        cout << colourDate << setw(5) << v[month][day] << "\x1B[0m";
                         break;
                     case (0): 
-                        cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\x1B[0m";
+                        cout << colourDate << setw(5) << v[month][day] << "\x1B[0m";
                         break;
                     case (1):
-                        cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\x1B[0m" << endl;
+                        cout << colourDate << setw(5) << v[month][day] << "\x1B[0m" << endl;
                         break;
                     } 
 
             } else {
                 switch (x) {
                     case (2):
-                        cout << "\x1B[38;2;246;74;164m" << v[month][day] << "\x1B[0m";
+                        cout << colourDate << v[month][day] << "\x1B[0m";
                         break;
                     case (3): 
-                        cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\x1B[0m";
+                        cout << colourDate << setw(5) << v[month][day] << "\x1B[0m";
                         break;
                     case (4):
-                        cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\x1B[0m";
+                        cout << colourDate << setw(5) << v[month][day] << "\x1B[0m";
                         break;
                     case (5):
-                        cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\x1B[0m";
+                        cout << colourDate << setw(5) << v[month][day] << "\x1B[0m";
                         break;
                     case (6): 
-                        cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\x1B[0m";
+                        cout << colourDate << setw(5) << v[month][day] << "\x1B[0m";
                         break;
                     case (0): 
-                        cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\x1B[0m";
+                        cout << colourDate << setw(5) << v[month][day] << "\x1B[0m";
                         break;
                     case (1):
-                        cout << "\x1B[38;2;246;74;164m" << setw(5) << v[month][day] << "\x1B[0m" << endl;
+                        cout << colourDate << setw(5) << v[month][day] << "\x1B[0m" << endl;
                         break;
                     }
 
@@ -289,11 +292,11 @@ void displaymonth(vector<vector<int>> v, int year, int month, int d) {
 
 void displayCalendar(vector<vector<int>> v, int year, int m, int d) {  //displays calendar
     for (int month = 0; month < 12; month++) {
-        cout << "\x1B[38;2;167;251;252m" << month + 1 << "/" << year << " - " << monthsStr(month + 1) << "\x1B[0m" << endl; //displays month/year - <month name>
+        cout << colourHeader << month + 1 << "/" << year << " - " << monthsStr(month + 1) << "\x1B[0m" << endl; //displays month/year - <month name>
 
 
-        cout << "Mon" << setw(5) << "Tue" << setw(5) << "Wed" << setw(5) << "Thu" << setw(5) << "Fri"  
-        << "\x1B[38;2;105;245;199m" << "\x1B[1m" << setw(5) << "Sat" << setw(5) << "Sun" << "\x1B[0m" << endl;  //header
+        cout << colourText << "Mon" << setw(5) << "Tue" << setw(5) << "Wed" << setw(5) << "Thu" << setw(5) << "Fri"  
+        << colourWeekends << "\x1B[1m" << setw(5) << "Sat" << setw(5) << "Sun" << "\x1B[0m" << endl;  //header
 
             for (int day = 0; day < v[month].size(); day++) {
                 int x = getDayOfWeek(month + 1, year, day+1);
@@ -306,123 +309,96 @@ void displayCalendar(vector<vector<int>> v, int year, int m, int d) {  //display
                     } else if ((x == 3) || (x == 4) || (x == 5) || (x == 6)) {
                         cout << setw(5) << v[month][day] << "\n" << endl;
                     } else {
-                        cout << "\x1B[38;2;147;250;216m" << setw(5) << v[month][day] << "\x1B[0m" << "\n" << endl;
+                        cout << colourWeekends << setw(5) << v[month][day] << "\x1B[0m" << "\n" << endl;
                     }
 
                 } else if (day == 0) {
                     switch (x) {  //aligning first row
                         case (2):
-                            cout << " " << v[month][day];
+                            cout << colourText << " " << v[month][day];
                             break; 
                         case (3):
-                            cout << setw(7)  << v[month][day];
+                            cout << colourText << setw(7)  << v[month][day];
                             break;
                         case (4): 
-                            cout << setw(12) << v[month][day];
+                            cout << colourText << setw(12) << v[month][day];
                             break;
                         case (5):
-                            cout << setw(17) << v[month][day];
+                            cout << colourText << setw(17) << v[month][day];
                             break;
                         case (6):
-                            cout << setw(22) << v[month][day];
+                            cout << colourText << setw(22) << v[month][day];
                             break;
                         case (0): 
-                            cout << "\x1B[38;2;147;250;216m" << setw(27) << v[month][day] << "\x1B[0m";
+                            cout << colourWeekends << setw(27) << v[month][day] << "\x1B[0m";
                             break;
                         case (1): 
-                            cout << "\x1B[38;2;147;250;216m" << setw(32) << v[month][day] << "\x1B[0m" << endl;
+                            cout << colourWeekends << setw(32) << v[month][day] << "\x1B[0m" << endl;
                             break;
                     }
 
                 } else if (day < 9) { //aligning 1 digit numbers
                         switch (x) {
                             case (2):
-                                cout << " " << v[month][day];
+                                cout << colourText << " " << v[month][day];
                                 break;
                             case (3): 
-                                cout << setw(5) << v[month][day];
+                                cout << colourText << setw(5) << v[month][day];
                                 break;
                             case (4):
-                                cout << setw(5) << v[month][day];
+                                cout << colourText << setw(5) << v[month][day];
                                 break;
                             case (5):
-                                cout << setw(5) << v[month][day];
+                                cout << colourText << setw(5) << v[month][day];
                                 break;
                             case (6): 
-                                cout << setw(5) << v[month][day];
+                                cout << colourText << setw(5) << v[month][day];
                                 break;
                             case (0): 
-                                cout << "\x1B[38;2;147;250;216m" << setw(5) << v[month][day] << "\x1B[0m";
+                                cout << colourWeekends << setw(5) << v[month][day] << "\x1B[0m";
                                 break;
                             case (1):
-                                cout << "\x1B[38;2;147;250;216m" << setw(5) << v[month][day] << "\x1B[0m" << endl;
+                                cout << colourWeekends << setw(5) << v[month][day] << "\x1B[0m" << endl;
                                 break;
                             } 
 
-                    } else {
-                        switch (x) {
-                            case (2):
-                                cout << v[month][day];
-                                break;
-                            case (3): 
-                                cout << setw(5) << v[month][day];
-                                break;
-                            case (4):
-                                cout << setw(5) << v[month][day];
-                                break;
-                            case (5):
-                                cout << setw(5) << v[month][day];
-                                break;
-                            case (6): 
-                                cout << setw(5) << v[month][day];
-                                break;
-                            case (0): 
-                                cout << "\x1B[38;2;147;250;216m" << setw(5) << v[month][day] << "\x1B[0m";
-                                break;
-                            case (1):
-                                cout << "\x1B[38;2;147;250;216m" << setw(5) << v[month][day] << "\x1B[0m" << endl;
-                                break;
-                        }
+                } else {
+                    switch (x) {
+                        case (2):
+                            cout << colourText << v[month][day];
+                            break;
+                        case (3): 
+                            cout << colourText << setw(5) << v[month][day];
+                            break;
+                        case (4):
+                            cout << colourText << setw(5) << v[month][day];
+                            break;
+                        case (5):
+                            cout << colourText << setw(5) << v[month][day];
+                            break;
+                        case (6): 
+                            cout << colourText << setw(5) << v[month][day];
+                            break;
+                        case (0): 
+                            cout << colourWeekends << setw(5) << v[month][day] << "\x1B[0m";
+                            break;
+                        case (1):
+                            cout << colourWeekends << setw(5) << v[month][day] << "\x1B[0m" << endl;
+                            break;
+                    }
 
-                    }  //printing calendar default
+                }  //printing calendar default
             }
             cout << endl;
         
     }
 }
 
-void newDates(vector<vector<int>> &v, int year) { 
+void moreDates(vector<vector<int>> &v, int year) {  //gets more dates if requested
+    bool valid = true;
     string option, message;
     int day, month;
 
-    cout << "Do you want to highlight a memory? (y/n)  ";  //should work by pressing enter
-    cin >> option;
-
-    if (option == "y") {
-        cout << "Input date: ";
-        cin >> day >> month;
-        getline(cin, message);
-
-        if (day > daysIn(month, year) || (month > 12)) {
-            cout <<  "Not a valid date" << endl;
-
-        } else {
-            cout << "\x1B[2J" << "\x1B[3J" << flush;
-            displayCalendar(v, year, month-1, day);
-
-            cout << "\x1B[38;2;166;247;243m" << day << ((day == 1) ? "st " : (day == 2) ? "nd " : (day == 3) ? "rd " : "th ") 
-                    << monthsStr(month) << message << "\x1B[0m" << endl;            
-        }   
-        
-    } else if (option == "n") {
-        cout << "See you soon!" << endl;
-
-    } else if ((option != "y") || (option != "n")) {
-        cout << "Not a valid option.";
-        newDates(v, year);
-    }
-
-    bool valid = true;
     while (valid) {
         cout << "Do you want to another highlight a memory? (y/n)  ";  //should work by pressing enter
         cin >> option;
@@ -449,11 +425,67 @@ void newDates(vector<vector<int>> &v, int year) {
 
         } else if ((option != "y") || (option != "n")) {
             cout << "Not a valid option.";
-            newDates(v, year);
+            moreDates(v, year);
         }
 
     }
+}
+
+void newDates(vector<vector<int>> &v, int year) { //gets first date
+    string option, message;
+    int day, month;
+
+    cout << "Do you want to highlight a memory? (y/n)  ";  //should work by pressing enter
+    cin >> option;
+
+    if (option == "y") {
+        cout << "Input date: ";
+        cin >> day >> month;
+        getline(cin, message);
+
+        if (day > daysIn(month, year) || (month > 12)) {
+            cout <<  "Not a valid date" << endl;
+            newDates(v, year);
+
+        } else {
+            cout << "\x1B[2J" << "\x1B[3J" << flush;
+            displayCalendar(v, year, month-1, day);
+
+            cout << colourMessage << day << (((day == 11) || (day == 12) || (day == 13)) ? "th " : (day%10 == 1) ? "st " : (day%10 == 2) ? "nd " : (day%10 == 3) ? "rd " : "th ") 
+                    << monthsStr(month) << message << "\x1B[0m" << endl;            
+        }   
+        
+    } else if (option == "n") {
+        cout << "See you soon!" << endl;
+
+    } else {
+        cout << "Not a valid option.";
+        moreDates(v, year);
+    }
 }   
+
+void getTheme() {
+    string theme;
+
+    cout << "Choose a theme for your calendar:\n";
+    cout << "   -" << "\x1B[38;2;255;243;196m" <<  " Cotton Candy\n";
+    cout << "   -" << "\x1B[38;2;167;251;252m" << " Blue" << "\x1B[0m" << endl;
+
+    getline(cin, theme);
+
+    if (theme == "cotton candy") {
+        colourHeader = "\x1B[38;2;255;243;196m";
+        colourWeekends = "\x1B[38;2;255;222;253m";
+        colourDate = "\x1B[38;2;216;165;250m";
+        colourMessage = "\x1B[38;2;216;165;250m";
+
+    } else if (theme == "blue") {
+        colourHeader = "\x1B[38;2;167;251;252m";
+        colourWeekends = "\x1B[38;2;105;245;199m";
+        colourDate = "\x1B[38;2;246;74;164m";
+        colourMessage = "\x1B[38;2;167;251;252m";
+    }
+}
 
 int main() {
     time_t now = time(0);
@@ -464,6 +496,7 @@ int main() {
     
     vector<vector<int>> calendar;
 
+    getTheme();
     getYear(calendar, year);
     displayCalendar(calendar, year, month-1, day-1);
     newDates(calendar, year);
