@@ -402,14 +402,58 @@ void newDates(vector<vector<int>> &v, int year) {
         cout << "Input date: ";
         cin >> day >> month;
         getline(cin, message);
-        cout << "\x1B[2J" << "\x1B[3J" << flush;
-        displayCalendar(v, year, month-1, day);
 
-        cout << "\x1B[38;2;166;247;243m" << day << ((day == 1) ? "st " : (day == 2) ? "nd " : (day == 3) ? "rd " : "th ") 
-        << monthsStr(month) << message << "\x1B[0m" << endl;
+        if (day > daysIn(month, year) || (month > 12)) {
+            cout <<  "Not a valid date" << endl;
+
+        } else {
+            cout << "\x1B[2J" << "\x1B[3J" << flush;
+            displayCalendar(v, year, month-1, day);
+
+            cout << "\x1B[38;2;166;247;243m" << day << ((day == 1) ? "st " : (day == 2) ? "nd " : (day == 3) ? "rd " : "th ") 
+                    << monthsStr(month) << message << "\x1B[0m" << endl;            
+        }   
+        
+    } else if (option == "n") {
+        cout << "See you soon!" << endl;
+
+    } else if ((option != "y") || (option != "n")) {
+        cout << "Not a valid option.";
+        newDates(v, year);
+    }
+
+    bool valid = true;
+    while (valid) {
+        cout << "Do you want to another highlight a memory? (y/n)  ";  //should work by pressing enter
+        cin >> option;
+
+        if (option == "y") {
+            cout << "Input date: ";
+            cin >> day >> month;
+            getline(cin, message);
+
+            if (day > daysIn(month, year) || (month > 12)) {
+                cout <<  "Not a valid date" << endl;
+
+            } else {
+                cout << "\x1B[2J" << "\x1B[3J" << flush;
+                displayCalendar(v, year, month-1, day);
+
+                cout << "\x1B[38;2;166;247;243m" << day << ((day == 1) ? "st " : (day == 2) ? "nd " : (day == 3) ? "rd " : "th ") 
+                     << monthsStr(month) << message << "\x1B[0m" << endl;
+            }
+
+        } else if (option == "n") {
+            cout << "See you soon!" << endl;
+            valid = false;
+
+        } else if ((option != "y") || (option != "n")) {
+            cout << "Not a valid option.";
+            newDates(v, year);
+        }
 
     }
-}
+}   
 
 int main() {
     time_t now = time(0);
