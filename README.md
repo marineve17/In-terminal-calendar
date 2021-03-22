@@ -5,3 +5,4 @@ Working on a calendar to display on the terminal. Should be possible to add date
 
     - Displays full calendar highlighting weekends and the day's date
     - Is able to highlight several dates of your choice (one at a time)
+    - You can to choose a theme for your calendar
